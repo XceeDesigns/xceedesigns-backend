@@ -38,4 +38,15 @@ router.post("/", [query('email').isEmail(), query('name').isEmpty()], async(req,
 });
 
 
+// Fetch users
+router.get("/fetch", async(req, res) => {
+    try {
+        const users = await User.find();
+        res.send(users);
+    } catch (error) {
+        res.send(error.message);
+    }
+});
+
+
 module.exports = router;
