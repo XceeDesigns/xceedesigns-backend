@@ -1,5 +1,6 @@
 const express = require("express");
 const connectDB = require("./db");
+const cors = require("cors");
 
 const PORT = 3000;
 
@@ -7,6 +8,11 @@ const PORT = 3000;
 connectDB();
 
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));   
+app.use(express.static("public"));
+app.use(cors());
 
 
 // Routes-01 - no login required
