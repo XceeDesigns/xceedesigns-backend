@@ -3,10 +3,12 @@ const query = require("express-validator").query;
 const { validationResult } = require("express-validator");
 const router = express.Router();
 const User = require("../models/User");
+const cors = require("cors");
 
 // Middleware to parse JSON and urlencoded request bodies
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
+router.use(cors());
 
 
 // Saves data into database
