@@ -59,5 +59,13 @@ router.delete("/delete/:id", async(req, res) => {
     }
 });
 
+// Authenticate Admin
+router.post("/admin", async(req, res) => {
+    if(req.body.adminAuth === "@Admin123") {
+        res.send("Admin Authenticated");
+    }
+    else res.send("Admin Not Authenticated");
+});
+
 
 module.exports = router;
