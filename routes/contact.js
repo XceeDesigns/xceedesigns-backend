@@ -48,5 +48,16 @@ router.get("/fetch", async(req, res) => {
     }
 });
 
+// Delete User Contact
+router.delete("/delete/:id", async(req, res) => {
+    try {
+        const id = req.params.id;
+        const user = await User.findByIdAndDelete(id);
+        res.send(user);
+    } catch (error) {
+        res.send(error.message);
+    }
+});
+
 
 module.exports = router;
