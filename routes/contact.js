@@ -43,7 +43,7 @@ router.post(
 router.post("/fetch", async (req, res) => {
   try {
     if (req.body.adminAuth != "@Admin123") {
-      res.json({"authSucess" : "true"});
+      res.status(401).send({auth : true});
     } else {
       const users = await User.find();
       res.send(users);
