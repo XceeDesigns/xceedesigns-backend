@@ -40,7 +40,7 @@ router.post(
 );
 
 // Fetch users
-router.get("/fetch", async (req, res) => {
+router.post("/fetch", async (req, res) => {
   try {
     if (req.body.adminAuth != "@Admin123") {
       res.send("Admin Not Authenticated");
