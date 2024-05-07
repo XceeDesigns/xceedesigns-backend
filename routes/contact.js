@@ -43,13 +43,13 @@ router.post(
 router.post("/fetch", async (req, res) => {
   try {
     if (req.body.adminAuth != "@Admin123") {
-      res.send("Admin Not Authenticated");
+      res.json({"authSucess" : "true"});
     } else {
       const users = await User.find();
       res.send(users);
     }
   } catch (error) {
-    res.send(error.message);
+    res.json(error.message);
   }
 });
 
