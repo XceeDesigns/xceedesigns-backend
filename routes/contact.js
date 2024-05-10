@@ -4,6 +4,7 @@ const { validationResult } = require("express-validator");
 const router = express.Router();
 const User = require("../models/User");
 const cors = require("cors");
+const nodemailer = require('nodemailer');
 
 // Middleware to parse JSON and urlencoded request bodies
 router.use(express.json());
@@ -29,6 +30,28 @@ router.post(
 
       try {
         const result = await newUser.save();
+        // var transporter = nodemailer.createTransport({
+        //     service: 'gmail',
+        //     auth: {
+        //       user: 'xceedesigns@gmail.com',
+        //       pass: 'juwt nwon efow dqmd'
+        //     }
+        //   });
+          
+        //   var mailOptions = {
+        //     from: `${email}`,
+        //     to: `info@xceedesigns.com`,
+        //     subject: `New feedback - ${name}`,
+        //     text: `${message}`
+        //   };
+          
+        //   transporter.sendMail(mailOptions, function(error, info){
+        //     if (error) {
+        //       console.log(error);
+        //     } else {
+        //       console.log('Email sent: ' + info.response);
+        //     }
+        //   });
         res.send(result);
       } catch (error) {
         res.send(error.message);
@@ -43,7 +66,7 @@ router.post(
 router.post("/fetch", async (req, res) => {
   try {
     if (req.body.adminAuth != "@Admin123") {
-      res.status(401).send({auth : true});
+      res.status(401).send({auth : false});
     } else {
       const users = await User.find();
       res.send(users);
