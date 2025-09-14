@@ -8,7 +8,6 @@ dotenv.config();
 router.use(express.json());
 router.use(bodyParser.json());
 
-// Contact Form Route
 router.post("/", async (req, res) => {
   const { name, email, message } = req.body;
 
