@@ -23,6 +23,8 @@ app.get("/", (req, res) => {
 // Routes-02 - no login required
 app.use("/contact", require("./routes/contact"));
 
+app.use("/sendmail", require("./routes/sendMail"));
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
